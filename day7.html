@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Timeline</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, red, blue);
+            font-family: Helvetica, sans-serif;
+            margin-top: 75px;
+            margin-bottom: 0px;
+            border: 2px dashed white;
+            border-bottom: none;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: white;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* Container around content */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* The circles on the timeline */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -14px;
+            background-color: white;
+            border: 1px solid black;
+            top: 19px;
+            border-radius: 50%;
+          
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 31px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        /* Fix the circle for containers on the right side */
+        .right::after {
+            left: -14px;
+        }
+
+        /* The actual content */
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+        }
+        
+        @media all and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after,
+            .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: aliceblue;
+            text-align: center;
+        }
+        
+        a:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        h2 span {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline">
+        <div class="container left">
+            <div class="content">
+                <h2><span>Day 7</span> - 04/11/2017</h2>
+                <p>This page itself. I love auto-referencing. Pure CSS Timeline, work on positioning, starting cool with media queries. CSS gradient.</p>
+                <a href="#">Already See</a>
+            </div>
+        </div>        
+        <div class="container right">
+            <div class="content">
+                <h2>Day 6 - 03/11/2017</h2>
+                <p>Fixed bar navigation. Putting a cool background with an offputting foreground, but hey, let's practice css image galleries!</p>
+                <a href="day6.html">See</a>
+            </div>
+        </div>        
+        <div class="container left">
+            <div class="content">
+                <h2>Day 5 - 02/11/2017</h2>
+                <p>A four column layout. What more can I say honestly?</p>
+                <a href="day5.html">See</a>
+            </div>
+        </div>        
+        <div class="container right">
+            <div class="content">
+                <h2>Day 4 - 01/11/2017</h2>
+                <p>Basic three french column layout. Get a good grip on the fundamentals.</p>
+                <a href="day4.html">See</a>
+            </div>
+        </div>        
+        <div class="container left">
+            <div class="content">
+                <h2>Day 3 - 31/10/2017</h2>
+                <p>A warm welcoming pumpkin that gets big and wide. CSS transformations.</p>
+                <a href="day3.html">See</a>
+            </div>
+        </div>        
+        <div class="container right">
+            <div class="content">
+                <h2>Day 2 - 30/10/2017</h2>
+                <p>Buttons everywhere. Using font awesome, creating bootstrap button like.</p>
+                <a href="day2.html">See</a>
+            </div>
+        </div>        
+        <div class="container left">
+            <div class="content">
+                <h2>Day 1 - 29/10/2017</h2>
+                <p>Eric Thomas, some blockquote, some cite. First web...cite of the challenge (hold your laughter!)
+                </p>
+                <a href="day1.html">See</a>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
